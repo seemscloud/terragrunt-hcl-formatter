@@ -1,0 +1,81 @@
+{
+  "name": "terragrunt-hcl-formatter",
+  "displayName": "Terragrunt HCL Formatter",
+  "description": "Formatter and highlighting focused on Terragrunt .hcl files.",
+  "version": "1.0.42",
+  "publisher": "local",
+  "icon": "assets/terragrunt.png",
+  "repository": {
+    "type": "git",
+    "url": "https://example.com/terragrunt-hcl-formatter"
+  },
+  "main": "./src/main.js",
+  "scripts": {
+    "test": "node tests/tests.js"
+  },
+  "engines": {
+    "vscode": "^1.39.0"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguage:terragrunt",
+    "onLanguage:hcl"
+  ],
+  "categories": [
+    "Programming Languages",
+    "Other",
+    "Formatters",
+    "Linters"
+  ],
+  "keywords": [
+    "devops",
+    "terragrunt",
+    "terragrunt formatter",
+    "hcl formatter",
+    "syntax highlighting",
+    "hcl"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Terragrunt Formatter",
+      "properties": {
+        "terragruntFormatter.collapseBlankLines": {
+          "type": "boolean",
+          "default": true,
+          "description": "Collapse multiple consecutive blank lines to a single blank line after formatting."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[terragrunt]": {
+        "editor.defaultFormatter": "local.terragrunt-hcl-formatter"
+      },
+      "[hcl]": {
+        "editor.defaultFormatter": "local.terragrunt-hcl-formatter"
+      },
+      "files.associations": {
+        "**/*.hcl": "terragrunt",
+        "**/terragrunt.hcl": "terragrunt"
+      }
+    },
+    "languages": [
+      {
+        "id": "terragrunt",
+        "aliases": [
+          "Terragrunt HCL"
+        ],
+        "extensions": [
+          ".hcl"
+        ],
+        "configuration": "./etc/language.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "terragrunt",
+        "scopeName": "scope.terragrunt",
+        "path": "./etc/terraform.json"
+      }
+    ]
+  }
+}
